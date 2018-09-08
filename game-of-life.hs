@@ -1,5 +1,7 @@
 import Data.List
 import Control.Monad
+import Control.Concurrent
+
 
 type Celula = (Int, Int)
 type Matriz = [Celula]
@@ -74,4 +76,5 @@ main = do
     printMatriz :: Matriz -> IO ()
     printMatriz matriz = do
       putStrLn $ formatoMatriz matriz
+      threadDelay 1000000
       putStrLn ""
