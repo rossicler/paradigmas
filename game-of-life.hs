@@ -48,15 +48,19 @@ formatoMatriz matriz = do
         max = maximum . map f
 
 main = do
+  putStrLn "escolha uma forma das listadas"
+  putStrLn "tetris"
+  putStrLn "Blinker"
+  putStrLn "Glider"
   mapM_ printMatriz . take 5 $ iterate passo prototipo
   where
     -- Prototipos listados
-    -- Idk
-    --prototipo = [(0, 0), (1, 0), (0, 1), (3, 3), (2, 3), (3, 2)]
+    -- tetris
+    prototipo = [(0, 0), (1, 0), (0, 1), (3, 3), (2, 3), (3, 2)]
     -- Blinker
     --prototipo = [(1,0), (1,1), (1,2)]
     -- Glider
-    prototipo = [(0,0), (0,1), (0,2), (1,0), (2,1)]
+    --prototipo = [(0,0), (0,1), (0,2), (1,0), (2,1)]
     -- Bote
     --prototipo = [(0,0), (0,1), (1,0), (1,2), (2,1)]
     -- Sapo
