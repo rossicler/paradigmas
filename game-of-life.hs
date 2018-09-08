@@ -1,6 +1,7 @@
 import Data.List
 import Control.Monad
 import Control.Concurrent
+import qualified System.Process as SP
 
 
 type Celula = (Int, Int)
@@ -29,6 +30,8 @@ frequencias xs = do
 
 -- UI
 
+clear = putStr "\ESC[2J"
+
 formatoMatriz :: Matriz -> String
 formatoMatriz matriz = do
   y <- ys
@@ -50,7 +53,7 @@ formatoMatriz matriz = do
         max = maximum . map f
 
 main = do
-  mapM_ printMatriz . take 5 $ iterate passo prototipo
+  mapM_ printMatriz . take 20 $ iterate passo prototipo
   where
     -- Prototipos listados
     -- Idk
@@ -58,7 +61,7 @@ main = do
     -- Blinker
     --prototipo = [(1,0), (1,1), (1,2)]
     -- Glider
-    prototipo = [(0,0), (0,1), (0,2), (1,0), (2,1)]
+    --prototipo = [(0,0), (0,1), (0,2), (1,0), (2,1)]
     -- Bote
     --prototipo = [(0,0), (0,1), (1,0), (1,2), (2,1)]
     -- Sapo
@@ -66,7 +69,7 @@ main = do
     -- LWSS
     --prototipo = [(0,1), (1,0), (2,0), (3,0), (3,1), (3,2), (3,3), (2,4), (0,4)]
     -- Plus sign
-    --prototipo = [(0,1), (1,0), (1,1), (1,2), (2,1)]
+    prototipo = [(0,1), (1,0), (1,1), (1,2), (2,1)]
     -- Diehard
     --prototipo = [(0,6),(1,0), (1,1), (2,1), (2,5), (2,6), (2,7)]
     -- Acorn
@@ -76,5 +79,6 @@ main = do
     printMatriz :: Matriz -> IO ()
     printMatriz matriz = do
       putStrLn $ formatoMatriz matriz
-      threadDelay 1000000
+      threadDelay 300000
+      clear
       putStrLn ""
