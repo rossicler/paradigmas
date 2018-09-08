@@ -40,9 +40,9 @@ formatoMatriz matriz = do
       | x == maximum xs = ['\n']
       | otherwise       = []
 
-    xs = tamanhMatriz fst
-    ys = tamanhMatriz snd
-    tamanhMatriz f = [min matriz .. max matriz]
+    xs = tamanhoMatriz fst
+    ys = tamanhoMatriz snd
+    tamanhoMatriz f = [min matriz .. max matriz]
       where
         min = minimum . map f
         max = maximum . map f
