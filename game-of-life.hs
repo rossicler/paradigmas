@@ -48,14 +48,28 @@ formatoMatriz matriz = do
         max = maximum . map f
 
 main = do
-  mapM_ printMatriz . take 5 $ iterate passo beacon
+  mapM_ printMatriz . take 5 $ iterate passo prototipo
   where
+    -- Prototipos listados
     -- Idk
-    --beacon = [(0, 0), (1, 0), (0, 1), (3, 3), (2, 3), (3, 2)]
+    --prototipo = [(0, 0), (1, 0), (0, 1), (3, 3), (2, 3), (3, 2)]
     -- Blinker
-    --beacon = [(1,0), (1,1), (1,2)]
+    --prototipo = [(1,0), (1,1), (1,2)]
     -- Glider
-    beacon = [(0,0), (0,1), (0,2), (1,0), (2,1)]
+    prototipo = [(0,0), (0,1), (0,2), (1,0), (2,1)]
+    -- Bote
+    --prototipo = [(0,0), (0,1), (1,0), (1,2), (2,1)]
+    -- Sapo
+    --prototipo = [(0,1), (0,2), (0,3), (1,0), (1,1), (1,2)]
+    -- LWSS
+    --prototipo = [(0,1), (1,0), (2,0), (3,0), (3,1), (3,2), (3,3), (2,4), (0,4)]
+    -- Plus sign
+    --prototipo = [(0,1), (1,0), (1,1), (1,2), (2,1)]
+    -- Diehard
+    --prototipo = [(0,6),(1,0), (1,1), (2,1), (2,5), (2,6), (2,7)]
+    -- Acorn
+    --prototipo = [(0,1), (1,3), (2,0), (2,1), (2,4), (2,5), (2,6)]
+
 
     printMatriz :: Matriz -> IO ()
     printMatriz matriz = do
