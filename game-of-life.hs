@@ -53,12 +53,22 @@ formatoMatriz matriz = do
         max = maximum . map f
 
 main = do
-  putStrLn "escolha uma forma das listadas"
-  putStrLn "tetris"
-  putStrLn "Blinker"
-  putStrLn "Glider"
-  mapM_ printMatriz . take 20 $ iterate passo prototipo
-  where
+  putStrLn "escolha uma forma das listadas:"
+  putStrLn "1 - tetris"
+  putStrLn "2 - Blinker"
+  putStrLn "3 - Glider"
+  putStrLn "4 - Bote"
+  putStrLn "5 - Sapo"
+  putStrLn "6 - LWSS"
+  putStrLn "7 - Plus sign"
+  putStrLn "8 - Diehard"
+  putStrLn "9 - Acorn"
+  opcao <- getChar
+  case opcao of "1" -> mapM_ printMatriz . take 20 $ iterate passo [(0, 0), (1, 0), (0, 1), (3, 3), (2, 3), (3, 2)]
+  --mapM_ printMatriz . take 20 $ iterate passo prototipo
+  --where
+    --prototipo
+    
     -- Prototipos listados
     -- tetris
     --prototipo = [(0, 0), (1, 0), (0, 1), (3, 3), (2, 3), (3, 2)]
@@ -73,7 +83,7 @@ main = do
     -- LWSS
     --prototipo = [(0,1), (1,0), (2,0), (3,0), (3,1), (3,2), (3,3), (2,4), (0,4)]
     -- Plus sign
-    prototipo = [(0,1), (1,0), (1,1), (1,2), (2,1)]
+   -- prototipo = [(0,1), (1,0), (1,1), (1,2), (2,1)]
     -- Diehard
     --prototipo = [(0,6),(1,0), (1,1), (2,1), (2,5), (2,6), (2,7)]
     -- Acorn
