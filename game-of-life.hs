@@ -54,7 +54,7 @@ formatoMatriz matriz = do
 
 main = do
   putStrLn "escolha uma forma das listadas:"
-  putStrLn "1 - tetris"
+  putStrLn "1 - Tetris"
   putStrLn "2 - Blinker"
   putStrLn "3 - Glider"
   putStrLn "4 - Bote"
@@ -64,35 +64,32 @@ main = do
   putStrLn "8 - Diehard"
   putStrLn "9 - Acorn"
   opcao <- getChar
-  case opcao of "1" -> mapM_ printMatriz . take 20 $ iterate passo [(0, 0), (1, 0), (0, 1), (3, 3), (2, 3), (3, 2)]
-  --mapM_ printMatriz . take 20 $ iterate passo prototipo
-  --where
-    --prototipo
     
-    -- Prototipos listados
-    -- tetris
-    --prototipo = [(0, 0), (1, 0), (0, 1), (3, 3), (2, 3), (3, 2)]
+  case opcao of
+    -- Tetris
+    '1' -> mapM_ printMatriz . take 20 $ iterate passo [(0, 0), (1, 0), (0, 1), (3, 3), (2, 3), (3, 2)]
     -- Blinker
-    --prototipo = [(1,0), (1,1), (1,2)]
+    '2' -> mapM_ printMatriz . take 20 $ iterate passo [(1,0), (1,1), (1,2)]
     -- Glider
-    --prototipo = [(0,0), (0,1), (0,2), (1,0), (2,1)]
+    '3' -> mapM_ printMatriz . take 20 $ iterate passo [(0,0), (0,1), (0,2), (1,0), (2,1)]
     -- Bote
-    --prototipo = [(0,0), (0,1), (1,0), (1,2), (2,1)]
+    '4' -> mapM_ printMatriz . take 20 $ iterate passo [(0,0), (0,1), (1,0), (1,2), (2,1)]
     -- Sapo
-    --prototipo = [(0,1), (0,2), (0,3), (1,0), (1,1), (1,2)]
+    '5' -> mapM_ printMatriz . take 20 $ iterate passo [(0,1), (0,2), (0,3), (1,0), (1,1), (1,2)]
     -- LWSS
-    --prototipo = [(0,1), (1,0), (2,0), (3,0), (3,1), (3,2), (3,3), (2,4), (0,4)]
+    '6' -> mapM_ printMatriz . take 20 $ iterate passo [(0,1), (1,0), (2,0), (3,0), (3,1), (3,2), (3,3), (2,4), (0,4)]
     -- Plus sign
-   -- prototipo = [(0,1), (1,0), (1,1), (1,2), (2,1)]
+    '7' -> mapM_ printMatriz . take 20 $ iterate passo [(0,1), (1,0), (1,1), (1,2), (2,1)]
     -- Diehard
-    --prototipo = [(0,6),(1,0), (1,1), (2,1), (2,5), (2,6), (2,7)]
+    '8' -> mapM_ printMatriz . take 20 $ iterate passo [(0,6),(1,0), (1,1), (2,1), (2,5), (2,6), (2,7)]
     -- Acorn
-    --prototipo = [(0,1), (1,3), (2,0), (2,1), (2,4), (2,5), (2,6)]
+    '9' -> mapM_ printMatriz . take 20 $ iterate passo [(0,1), (1,3), (2,0), (2,1), (2,4), (2,5), (2,6)]
+    otherwise -> error "voce escolheu uma opcao inexistente"
 
 
-    printMatriz :: Matriz -> IO ()
-    printMatriz matriz = do
-      putStrLn $ formatoMatriz matriz
-      threadDelay 300000
-      clear
-      putStrLn ""
+printMatriz :: Matriz -> IO ()
+printMatriz matriz = do
+  putStrLn $ formatoMatriz matriz
+  threadDelay 300000
+  clear
+  putStrLn ""
