@@ -24,3 +24,10 @@ ou caso já esteja com o ghci executando digite:
     main
 
 
+### Integrantes
+
+Matricula - Nome
+
+160010331 - José Aquiles
+
+160154197 - Rossicler Junior
