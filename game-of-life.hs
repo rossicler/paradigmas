@@ -8,7 +8,7 @@ type Celula = (Int, Int)
 type Matriz = [Celula]
 
 -- Logica do jogo
-
+-- Realiza a logica de verificação dos vizinhos
 vizinhos :: Celula -> Matriz
 vizinhos (x, y) = do
   dx <- [-1..1]
@@ -16,12 +16,14 @@ vizinhos (x, y) = do
   guard (dx /= 0 || dy /= 0)
   return (x + dx, y + dy)
 
+-- Realiza a logica dos passos de uma celula 
 passo :: Matriz -> Matriz
 passo celulas = do
   (novaCelula, n) <- frequencias $ concatMap vizinhos celulas
   guard $ (n == 3) || (n == 2 && novaCelula `elem` celulas)
   return novaCelula
 
+-- Faz uma contagem da frequencia dos vizinhos
 frequencias :: Ord a => [a] -> [(a, Int)]
 frequencias xs = do
   x <- group $ sort xs
@@ -29,9 +31,10 @@ frequencias xs = do
 
 
 -- UI
-
+-- Limpa a tela do terminal Linux
 clear = putStr "\ESC[2J"
 
+-- Faz o farmato da matriz para ser apresentada via terminal
 formatoMatriz :: Matriz -> String
 formatoMatriz matriz = do
   y <- ys
@@ -52,6 +55,7 @@ formatoMatriz matriz = do
         min = minimum . map f
         max = maximum . map f
 
+-- Função principal para a execução do programa
 main = do
   putStrLn "escolha uma forma das listadas:"
   putStrLn "1 - Tetris"
@@ -86,7 +90,8 @@ main = do
     '9' -> mapM_ printMatriz . take 20 $ iterate passo [(0,1), (1,3), (2,0), (2,1), (2,4), (2,5), (2,6)]
     otherwise -> error "voce escolheu uma opcao inexistente"
 
-
+-- Cria um delay para imprimir a matriz de forma em que
+-- o usuário possa ver com mais calma
 printMatriz :: Matriz -> IO ()
 printMatriz matriz = do
   putStrLn $ formatoMatriz matriz
